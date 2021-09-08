@@ -13,11 +13,11 @@ namespace ServicioUsuario.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string data_source = "DESKTOP-T8DE21Q";
-            string initial_catalog = "apiBase";
-            string user_id = "jose_mercado";
-            string password = "edu123";
-            optionsBuilder.UseSqlServer(@"data source=" + data_source + "; initial catalog=" + initial_catalog + "; persist security info=True; user id=" + user_id + "; password=" + password + "");
+            string server_name = "LAPTOP-FJJI83V9";
+            string db_name = "prueba_microservicio";
+            string user_id = "microservicio_asp";
+            string password = "admin_asp";
+            optionsBuilder.UseSqlServer(@"data source=" + server_name + "; initial catalog=" + db_name + "; persist security info=True; user id=" + user_id + "; password=" + password + "");
         }
     }
 }
