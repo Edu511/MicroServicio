@@ -1,8 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ServicioUsuario.Database.Entities;
+using ServicioUsuario.Database;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,36 +19,67 @@ namespace ServicioUsuario.Controllers
     [ApiController]
     public class ExternalApiController : ControllerBase
     {
+
+        DatabaseContext db;
+
+        public ExternalApiController()
+        {
+            db = new DatabaseContext();
+        }
         // GET: api/<ExternalApiController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public void GetDatosExternos()
         {
-            return new string[] { "value1", "value2" };
+            /*string api_url = String.Format("http://localhost:29064/api/datospjeh/1");
+            WebRequest request = WebRequest.Create(api_url);
+            request.Method = "GET";
+            HttpWebResponse response = null;
+            response = (HttpWebResponse)request.GetResponse();
+
+            string stream_result = null;
+            using (Stream stream = response.GetResponseStream())
+            {
+                
+                StreamReader response_stream = new StreamReader(stream);
+                stream_result = response_stream.ReadToEnd();
+                response_stream.Close();
+
+                Console.WriteLine(response_stream);
+
+                return StatusCode(StatusCodes.Status201Created, stream_result);
+
+            }*/
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:29064/api/");
+                //HTTP GET
+                var responseTask = client.GetAsync("datospjeh");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    var readTask = result.Content.ReadAsStringAsync();
+                    readTask.Wait();
+
+                    var students = readTask.Result;
+
+                    foreach (var student in students)
+                    {
+                        Console.WriteLine(student);
+                    }
+
+
+                    return;
+                }
+            }
+            Console.ReadLine();
+
+
         }
 
-        // GET api/<ExternalApiController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ExternalApiController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ExternalApiController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ExternalApiController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }
