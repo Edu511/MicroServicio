@@ -10,6 +10,7 @@ namespace ServicioUsuario.Database
     public class DatabaseContext : DbContext
     {
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<DatosPJEH> DatosPJEH { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -20,4 +20,3 @@ namespace ServicioUsuario.Database.Entities
         public string AsuntoRelacionado { get; set; }
     }
 }
-}
