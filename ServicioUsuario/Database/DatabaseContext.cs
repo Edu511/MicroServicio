@@ -13,7 +13,7 @@ namespace ServicioUsuario.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string data_source = "DESKTOP-T8DE21Q";
+            string data_source = "LAPTOP-SP68ANVL";
             string initial_catalog = "apiBase";
             string user_id = "jose_mercado";
             string password = "edu123";
