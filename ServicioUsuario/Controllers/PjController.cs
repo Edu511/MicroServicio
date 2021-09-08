@@ -1,48 +1,47 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ServicioUsuario.Database;
-using ServicioUsuario.Database.Entities;
+using ServicioPJ.Database;
+using ServicioPJ.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace ServicioUsuario.Controllers
+namespace ServicioPJ.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    public class PjController : ControllerBase
     {
         DatabaseContext db;
 
-        public UsuarioController()
+        public PjController()
         {
             db = new DatabaseContext();
         }
 
         // GET: api/<UsuarioController>
         [HttpGet]
-        public IEnumerable<Usuario> Get()
+        public IEnumerable<MicroPJ> Get()
         {
-            return db.Usuarios.ToList();
+            return db.DBPJ.ToList();
         }
 
         // GET api/<UsuarioController>/5
         [HttpGet("{id}")]
-        public Usuario Get(int id)
+        public MicroPJ Get(int id)
         {
-            return db.Usuarios.Find(id);
+            return db.DBPJ.Find(id);
         }
 
         // POST api/<UsuarioController>
         [HttpPost]
-        public IActionResult Post([FromBody] Usuario model)
+        public IActionResult Post([FromBody] MicroPJ model)
         {
             try 
             {
-                db.Usuarios.Add(model);
+                db.DBPJ.Add(model);
                 db.SaveChanges();
                 
                 return StatusCode(StatusCodes.Status201Created);

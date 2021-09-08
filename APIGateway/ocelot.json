@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/usuario",
+      "DownstreamPathTemplate": "/api/pj",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -9,11 +9,11 @@
           "Port": "29064"
         }
       ],
-      "UpstreamPathTemplate": "/usuario",
+      "UpstreamPathTemplate": "/pj",
       "UpstreamHttpMethod": [ "GET", "POST" ]
     },
     {
-      "DownstreamPathTemplate": "/api/usuario/{id}",
+      "DownstreamPathTemplate": "/api/pj/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -21,7 +21,7 @@
           "Port": "29064"
         }
       ],
-      "UpstreamPathTemplate": "/usuario/{id}",
+      "UpstreamPathTemplate": "/pj/{id}",
       "UpstreamHttpMethod": [ "GET" ]
     }
   ]

@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/usuario",
+      "launchUrl": "api/pj",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "ServicioUsuario": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/usuario",
+      "launchUrl": "api/pj",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

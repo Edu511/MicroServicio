@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ServicioUsuario.Database;
+using ServicioPJ.Database;
 
-namespace ServicioUsuario.Migrations
+namespace ServicioPoderJudicial.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
     partial class DatabaseContextModelSnapshot : ModelSnapshot
@@ -18,25 +18,40 @@ namespace ServicioUsuario.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ServicioUsuario.Database.Entities.Usuario", b =>
+            modelBuilder.Entity("ServicioPJ.Database.Entities.MicroPJ", b =>
                 {
-                    b.Property<int>("IdUsuario")
+                    b.Property<int>("IdSolicitud")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Contacto")
+                    b.Property<string>("AsuntoRelacionado")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Direccion")
+                    b.Property<string>("Estado")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nombre")
+                    b.Property<string>("FechaAudiencia")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdUsuario");
+                    b.Property<string>("JuzgadoAsignado")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Usuarios");
+                    b.Property<string>("NUC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NoOficioSolicitud")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SalaAsignada")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipoAudiencia")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdSolicitud");
+
+                    b.ToTable("DBPJ");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,15 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ServicioUsuario.Database.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ServicioPJ.Database.Entities;
 
-namespace ServicioUsuario.Database
+namespace ServicioPJ.Database
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<MicroPJ> DBPJ { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
